@@ -17,12 +17,15 @@
 /**
  * Plugin administration pages are defined here.
  *
- * @package     datapreset_concepthierarchy
+ * @package     datafield
+ * @subpackage  concepthierarchy
  * @category    admin
  * @copyright   2024 Nikolay <nikolaypn2002@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+ /*
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
@@ -33,3 +36,4 @@ if ($hassiteconfig) {
         // TODO: Define actual plugin settings page and add it to the tree - {@link https://docs.moodle.org/dev/Admin_settings}.
     }
 }
+*/

@@ -16,9 +16,9 @@
 
 /**
  * Plugin strings are defined here.
- *
- * @package     datapreset_concepthierarchy
- * @category    string
+ * 
+ * @package     datafield
+ * @subpackage  concepthierarchy
  * @copyright   2024 Nikolay <nikolaypn2002@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

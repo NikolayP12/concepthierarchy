@@ -16,8 +16,9 @@
 
 /**
  * Plugin version and other meta-data are defined here.
- *
- * @package     datapreset_concepthierarchy
+ * 
+ * @package     datafield
+ * @subpackage  concepthierarchy
  * @copyright   2024 Nikolay <nikolaypn2002@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,4 +29,4 @@ $plugin->component = 'datapreset_concepthierarchy';
 $plugin->release = '0.1.0';
 $plugin->version = 2024030100;
 $plugin->requires = 2022112800;
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->maturity = MATURITY_ALPHA; // Revisar si esto es necesario porque en el resto de campos no está presente
