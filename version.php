@@ -29,4 +29,3 @@ $plugin->component = 'datapreset_concepthierarchy';
 $plugin->release = '0.1.0';
 $plugin->version = 2024030100;
 $plugin->requires = 2022112800;
-$plugin->maturity = MATURITY_ALPHA; // Revisar si esto es necesario porque en el resto de campos no está presente
