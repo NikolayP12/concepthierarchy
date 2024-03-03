@@ -11,8 +11,8 @@ class data_field_concepthierarchy extends data_field_base
 
     public function get_data_content_preview(int $recordid): stdClass
     {
-        // El siguiente es un ejemplo genérico:
-        $previewContent = 'Nombre del Concepto Padre: ';
+
+        $previewContent = get_string('previewContent', 'datafield_concepthierarchy');
 
         return (object)[
             'id' => 0,
@@ -29,7 +29,7 @@ class data_field_concepthierarchy extends data_field_base
     // En esta función se define cómo se va a ver y qué elementos contendrá el formulario cuando se agregue o edite una nueva entrada.
     function define_field_add(&$mform)
     {
-        // Añade un campo de texto con id parentName al formulario.
+        // Añade un campo de tipo texto con id parentName al formulario.
         $mform->addElement('text', 'parentName', get_string('parentFieldLabel', 'datafield_concepthierarchy'));
         $mform->setType('parentName', PARAM_TEXT); // Esta línea establece el tipo de datos esperado.
     }
@@ -64,7 +64,7 @@ class data_field_concepthierarchy extends data_field_base
             }
         }
 
-        // Tercero, si el concepto padre existe, procede con la actualización o inserción del contenido.
+        // Tercero, si el concepto padre existe, se procede con la actualización o inserción del contenido.
         $content = new stdClass();
         $content->recordid = $recordid;
         $content->fieldid = $this->field->id; // Es el id de la base de datos.
@@ -72,7 +72,7 @@ class data_field_concepthierarchy extends data_field_base
 
         // Busca si ya existe contenido para este campo y registro.
         if ($existingcontent = $DB->get_record('data_content', ['fieldid' => $this->field->id, 'recordid' => $recordid])) {
-            // Si existe, actualízalo.
+            // Si existe, actualiza.
             $content->id = $existingcontent->id;
             $DB->update_record('data_content', $content);
         } else {
@@ -80,13 +80,13 @@ class data_field_concepthierarchy extends data_field_base
             $DB->insert_record('data_content', $content);
         }
 
-        return true; // Devuelve verdadero si el proceso es exitoso. 
+        return true; // Devuelve true si el proceso es exitoso. 
     }
 
-    // Esta función se utiliza para la visualización del campo cuando se navega por las entradas
+    // Esta función se utiliza para la visualización del campo cuando se navega por las entradas.
     function display_browse_field($recordid, $template)
     {
-        // Obtenemos el contenido del campo actual 
+        // Obtenemos el contenido del campo actual. 
         $content = $this->get_data_content($recordid);
         if (!$content || $content->content === '') {
             return ''; // En caso de que esté vacío no mostramos nada.
@@ -126,7 +126,7 @@ class data_field_concepthierarchy extends data_field_base
         $i++;
         $name = "df_parentConcept_$i";
 
-        // Devuelve un array con dos elementos, la clausula y el array asociativo de los parametros nombre-valor
+        // Devuelve un array con dos elementos, la clausula Where y el array asociativo de los parametros nombre-valor.
         return array(" ({$tablealias}.fieldid = {$this->field->id} AND " . $DB->sql_like("{$tablealias}.content", ":$name", false) . ") ", array($name => "%$value%"));
     }
 

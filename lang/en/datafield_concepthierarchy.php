@@ -24,6 +24,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+$string['previewContent'] = 'Name of the parent concept:';
 $string['parentFieldLabel'] = 'ParentConcept';
 $string['error_nonexistent_field'] = 'The specified "Name" or "Nombre" field does not exist.';
 $string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
