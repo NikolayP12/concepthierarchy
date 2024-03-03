@@ -82,4 +82,16 @@ class data_field_concepthierarchy extends data_field_base
 
         return true; // Devuelve verdadero si el proceso es exitoso. 
     }
+
+    // Esta función se utiliza para la visualización del campo cuando se navega por las entradas
+    function display_browse_field($recordid, $template)
+    {
+        // Obtenemos el contenido del campo actual 
+        $content = $this->get_data_content($recordid);
+        if (!$content || $content->content === '') {
+            return ''; // En caso de que esté vacío no mostramos nada.
+        }
+        // Mostramos el nombre del concepto padre.
+        return format_string($content->content);
+    }
 }
