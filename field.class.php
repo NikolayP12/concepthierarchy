@@ -117,4 +117,16 @@ class data_field_concepthierarchy extends data_field_base
         // El segundo argumento es el valor predeterminado para el parámetro, que se obtiene del array $defaults.
         return optional_param($param, $defaults[$param], PARAM_NOTAGS);
     }
+
+    function generate_sql($tablealias, $value)
+    {
+        global $DB;
+
+        static $i = 0; // Se va a utilizar para generar identificadores únicos con cada llamada a la función.
+        $i++;
+        $name = "df_parentConcept_$i";
+
+        // Devuelve un array con dos elementos, la clausula y el array asociativo de los parametros nombre-valor
+        return array(" ({$tablealias}.fieldid = {$this->field->id} AND " . $DB->sql_like("{$tablealias}.content", ":$name", false) . ") ", array($name => "%$value%"));
+    }
 }
