@@ -24,10 +24,6 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-
-$string['concepthierarchy:mod/data/concepthierarchy:editentry'] = 'Editar la jerarquía de las entradas de la base de datos';
-$string['instructions'] = 'The instructions';
-$string['pluginname'] = 'Concept Hierarchy';
 $string['parentFieldLabel'] = 'ParentConcept';
-$string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
 $string['error_nonexistent_field'] = 'The specified "Name" or "Nombre" field does not exist.';
+$string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
