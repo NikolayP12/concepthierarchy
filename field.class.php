@@ -129,4 +129,33 @@ class data_field_concepthierarchy extends data_field_base
         // Devuelve un array con dos elementos, la clausula y el array asociativo de los parametros nombre-valor
         return array(" ({$tablealias}.fieldid = {$this->field->id} AND " . $DB->sql_like("{$tablealias}.content", ":$name", false) . ") ", array($name => "%$value%"));
     }
+
+    /**
+     * Comprueba si un campo de un formulario de adición está vacío.
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @return bool
+     */
+    function notemptyfield($value, $name)
+    {
+        return strval($value) !== '';
+    }
+
+    /**
+     * Devuelve la configuración del plugin para funciones externas, .
+     * Permite que las configuraciones del plugin sean accesibles desde fuera,
+     * lo cual es útil para la integración con otros sistemas o para funciones avanzadas de Moodle.
+     * @return array the list of config parameters
+     * @since Moodle 3.3
+     */
+    public function get_config_for_external()
+    {
+        // Return all the config parameters.
+        $configs = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $configs["param$i"] = $this->field->{"param$i"};
+        }
+        return $configs;
+    }
 }
