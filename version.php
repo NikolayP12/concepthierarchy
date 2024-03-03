@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'datapreset_concepthierarchy';
+$plugin->component = 'datafield_concepthierarchy'; // Nombre del plugin.
 $plugin->release = '0.1.0';
-$plugin->version = 2024030100;
-$plugin->requires = 2022112800;
+$plugin->version = 2024030100; // Versión de Moodle requerida.
+$plugin->requires = 2022112800; // Version del plugin.
