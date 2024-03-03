@@ -29,3 +29,5 @@ $string['concepthierarchy:mod/data/concepthierarchy:editentry'] = 'Editar la jer
 $string['instructions'] = 'The instructions';
 $string['pluginname'] = 'Concept Hierarchy';
 $string['parentFieldLabel'] = 'Parent Concept';
+$string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
+$string['error_nonexistent_field'] = 'The specified "Name" or "Nombre" field does not exist.';
