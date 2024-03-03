@@ -28,3 +28,4 @@ defined('MOODLE_INTERNAL') || die();
 $string['concepthierarchy:mod/data/concepthierarchy:editentry'] = 'Editar la jerarquía de las entradas de la base de datos';
 $string['instructions'] = 'The instructions';
 $string['pluginname'] = 'Concept Hierarchy';
+$string['parentFieldLabel'] = 'Parent Concept';
