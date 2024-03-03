@@ -24,6 +24,9 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+$string['pluginname'] = 'concepthierarchy';
+$string['fieldtypelabel'] = 'Parent Concept';
+$string['privacy:metadata'] = 'The Parent Concept field component doesn\'t store any personal data; it uses tables defined in mod_data.';
 $string['previewContent'] = 'Name of the parent concept:';
 $string['parentFieldLabel'] = 'ParentConcept';
 $string['error_nonexistent_field'] = 'The specified "Name" or "Nombre" field does not exist.';
