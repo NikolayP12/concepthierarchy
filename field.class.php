@@ -95,11 +95,26 @@ class data_field_concepthierarchy extends data_field_base
         return format_string($content->content);
     }
 
-    // Esta función genera el HTML necesario para mostrar un campo de búsqueda para el campo que se está desarrollando
+    // Esta función genera el HTML necesario para mostrar un campo de búsqueda para el campo que se está desarrollando.
     function display_search_field($value = '')
     {
         return '<label class="accesshide" for="f_' . $this->field->id . '">' . $this->field->name . '</label>' .
             '<input type="text" class="form-control" size="16" id="f_' . $this->field->id . '" ' .
             'name="f_' . $this->field->id . '" value="' . s($value) . '" />';
+    }
+
+    // Esta función es utilizada para procesar y obtener el valor del campo de búsqueda cuando se realiza una búsqueda.
+    public function parse_search_field($defaults = null)
+    {
+        $param = 'f_' . $this->field->id; // Se construye el nombre del parámetro.
+
+        if (empty($defaults[$param])) { // Se comprueba si existe un valor predeterminado para este campo.
+            $defaults = array($param => ''); // Si no existe, se establece un valor vacio predeterminado.
+        }
+
+        // "optional_param" es una función que se utiliza para obtener el valor del parámetro de búsqueda desde la solicitud HTTP.
+        // El primer argumento es el nombre del parámetro que se busca
+        // El segundo argumento es el valor predeterminado para el parámetro, que se obtiene del array $defaults.
+        return optional_param($param, $defaults[$param], PARAM_NOTAGS);
     }
 }
