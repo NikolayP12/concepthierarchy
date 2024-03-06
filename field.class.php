@@ -57,6 +57,7 @@ class data_field_concepthierarchy extends data_field_base
                 $params = [$fieldId, $value];
                 $count = $DB->count_records_sql($sql, $params);
 
+                // Comprobación de si existe el padre.
                 if ($count < 1) {
                     throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
                 }
@@ -65,7 +66,6 @@ class data_field_concepthierarchy extends data_field_base
                 throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
             }
         }
-
 
         // Tercero, si el padre existe o no se ha introducido un padre, se procede con la actualización o inserción del contenido.
         $content = new stdClass();

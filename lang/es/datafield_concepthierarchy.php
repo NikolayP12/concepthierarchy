@@ -24,12 +24,12 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-$string['pluginname'] = 'Parent Concept';
-$string['fieldtypelabel'] = 'Hierarchy';
-$string['privacy:metadata'] = 'The Parent Concept field component doesn\'t store any personal data; it uses tables defined in mod_data.';
-$string['previewContent'] = 'Name of the parent concept:';
-$string['parentFieldLabel'] = 'Parent Concept';
+$string['pluginname'] = 'Concepto Padre';
+$string['fieldtypelabel'] = 'Jerarquía';
+$string['privacy:metadata'] = 'El componente de campo Parent Concept no almacena ningún dato personal; utiliza tablas definidas en mod_data.';
+$string['previewContent'] = 'Nombre del concepto padre:';
+$string['parentFieldLabel'] = 'Concepto de padre';
 
 // Mensajes de error.
-$string['error_nonexistent_field'] = 'The specified field "Concept" or "Concepto" does not exist.';
-$string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
+$string['error_nonexistent_field'] = 'El campo especificado "Concepto" o "Concept" no existe.';
+$string['error_nonexistent_parent'] = 'El valor especificado como padre no existe.';
