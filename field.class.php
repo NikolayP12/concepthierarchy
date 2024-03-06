@@ -42,28 +42,6 @@ class data_field_concepthierarchy extends data_field_base
         // $value contiene el nombre del concepto padre ingresado.
         $value = trim($value); // Limpia el valor para eliminar espacios en blanco innecesarios.
 
-        // // Primero, obtengo el id del campo 'Name' o 'Nombre', en funcion de cómo se haya llamado.
-        // $fieldNameid = $DB->get_record('data_fields', array('dataid' => $this->field->dataid, 'name' => 'Name'), '*', IGNORE_MISSING);
-        // $fieldNombreid = $DB->get_record('data_fields', array('dataid' => $this->field->dataid, 'name' => 'Nombre'), '*', IGNORE_MISSING);
-
-        // if (!$fieldNameid && !$fieldNombreid) {
-        //     // Si el id del campo 'Name' o 'Nombre' no se encuentra, lanzamos una excepción.
-        //     throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
-        // }
-
-        // // Segundo, compruebo si existe el padre introducido.
-        // if ($value && $fieldNameid && !$fieldNombreid) { // Si se ha introducido un padre, y hay un campo Name y no un campo Nombre, comprobamos si existe el padre.
-        //     $parentExists = $DB->record_exists('data_content', array('fieldid' => $fieldNameid->id, 'content' => $value));
-        //     if (!$parentExists) {
-        //         throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
-        //     }
-        // } else if ($value && !$fieldNameid && $fieldNombreid){ // Si se ha introducido un padre, y no hay un campo Name y hay un campo Nombre, comprobamos si existe el padre.
-        //     $parentExists = $DB->record_exists('data_content', array('fieldid' => $fieldNombreid->id, 'content' => $value));
-        //     if (!$parentExists) {
-        //         throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
-        //     }
-        // }
-
         if (!empty($value)) {
 
             // Intenta obtener el ID del campo 'Concept' o 'Concepto'. Para saber si existe el campo en la Base de datos.
@@ -74,8 +52,12 @@ class data_field_concepthierarchy extends data_field_base
             $fieldId = $fieldConceptId ? $fieldConceptId : $fieldConceptoId;
 
             if ($fieldId) {
-                $parentExists = $DB->record_exists('data_content', ['fieldid' => $fieldId, 'content' => $value]);
-                if (!$parentExists) {
+                // Construye la consulta usando sql_compare_text que cuenta cuántos registros en la tabla data_content tienen el fieldid anterior.
+                $sql = "SELECT COUNT('x') FROM {data_content} WHERE fieldid = ? AND " . $DB->sql_compare_text('content') . " = ?";
+                $params = [$fieldId, $value];
+                $count = $DB->count_records_sql($sql, $params);
+
+                if ($count < 1) {
                     throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
                 }
             } else {
@@ -83,6 +65,7 @@ class data_field_concepthierarchy extends data_field_base
                 throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
             }
         }
+
 
         // Tercero, si el padre existe o no se ha introducido un padre, se procede con la actualización o inserción del contenido.
         $content = new stdClass();
