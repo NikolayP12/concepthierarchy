@@ -60,6 +60,7 @@ class data_field_concepthierarchy extends data_field_base
                 // Comprobación de si existe el padre.
                 if ($count < 1) {
                     throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
+                    // Apunte: Eliminar el error que sale del stack (pila).
                 }
             } else {
                 // Si no se encuentra ningún campo 'Concept' o 'Concepto', lanza una excepción.
@@ -70,7 +71,7 @@ class data_field_concepthierarchy extends data_field_base
         // Tercero, si el padre existe o no se ha introducido un padre, se procede con la actualización o inserción del contenido.
         $content = new stdClass();
         $content->recordid = $recordid;
-        $content->fieldid = $this->field->id; // Es el id de la base de datos.
+        $content->fieldid = $this->field->id; // Es el id del campo.
         $content->content = $value; // El valor a insertar.
 
         // Busca si ya existe contenido para este campo y registro.
