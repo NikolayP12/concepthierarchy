@@ -26,6 +26,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'datafield_concepthierarchy';
-$plugin->release = '0.1.0';
-$plugin->version = 2024030100;
+$plugin->release = '1.3.1';
+$plugin->version = 2024030103;
 $plugin->requires = 2022112800;
