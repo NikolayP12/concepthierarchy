@@ -31,5 +31,5 @@ $string['previewContent'] = 'Name of the parent concept:';
 $string['parentFieldLabel'] = 'Parent Concept';
 
 // Error messages.
-$string['error_nonexistent_field'] = 'The specified field "Concept" or "Concepto" does not exist.';
+$string['error_nonexistent_field'] = 'There is no field in the entry called "Concept" or "Concept".';
 $string['error_nonexistent_parent'] = 'The value specified as parent does not exist.';
