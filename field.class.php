@@ -95,16 +95,22 @@ class data_field_concepthierarchy extends data_field_base
 
                     // Checks if the parent concept exists based on the count result.
                     if ($count < 1) {
-                        throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
+                        throw new moodle_exception('error_nonexistent_parent', 'datafield_concepthierarchy');
                         // Apunte: Eliminar el error que sale del stack (pila).
                     }
                 } else {
                     // Throws an exception if no 'Concept' or 'Concepto' field was found.
-                    throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
+                    throw new moodle_exception('error_nonexistent_field', 'datafield_concepthierarchy');
                 }
             }
         } catch (moodle_exception $e) {
             \core\notification::error(get_string($e->errorcode, $e->module));
+            $errorOcurred = true;
+        }
+
+        // If an error occurred, it terminates the execution of the method by returning false.
+        if ($errorOcurred) {
+            return false;
         }
 
         // Proceeds with updating or inserting the content for this field in the database.
