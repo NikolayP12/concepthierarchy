@@ -77,31 +77,34 @@ class data_field_concepthierarchy extends data_field_base
 
         // $value contains the name of the parent concept entered.
         $value = trim($value);
+        try {
+            if (!empty($value)) {
 
-        if (!empty($value)) {
+                // Try to get the ID of the 'Concept' field. To find out if the field exists in the database.
+                $fieldConceptId = $DB->get_field('data_fields', 'id', ['dataid' => $this->field->dataid, 'name' => 'Concept'], IGNORE_MISSING);
+                $fieldConceptoId = $DB->get_field('data_fields', 'id', ['dataid' => $this->field->dataid, 'name' => 'Concepto'], IGNORE_MISSING);
 
-            // Try to get the ID of the 'Concept' field. To find out if the field exists in the database.
-            $fieldConceptId = $DB->get_field('data_fields', 'id', ['dataid' => $this->field->dataid, 'name' => 'Concept'], IGNORE_MISSING);
-            $fieldConceptoId = $DB->get_field('data_fields', 'id', ['dataid' => $this->field->dataid, 'name' => 'Concepto'], IGNORE_MISSING);
+                // Check wich one exists.
+                $fieldId = $fieldConceptId ? $fieldConceptId : $fieldConceptoId;
 
-            // Check wich one exists.
-            $fieldId = $fieldConceptId ? $fieldConceptId : $fieldConceptoId;
+                if ($fieldId) {
+                    // Constructs a query to count matching records in the database for the specified concept name.
+                    $sql = "SELECT COUNT('x') FROM {data_content} WHERE fieldid = ? AND " . $DB->sql_compare_text('content') . " = ?";
+                    $params = [$fieldId, $value];
+                    $count = $DB->count_records_sql($sql, $params);
 
-            if ($fieldId) {
-                // Constructs a query to count matching records in the database for the specified concept name.
-                $sql = "SELECT COUNT('x') FROM {data_content} WHERE fieldid = ? AND " . $DB->sql_compare_text('content') . " = ?";
-                $params = [$fieldId, $value];
-                $count = $DB->count_records_sql($sql, $params);
-
-                // Checks if the parent concept exists based on the count result.
-                if ($count < 1) {
-                    throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
-                    // Apunte: Eliminar el error que sale del stack (pila).
+                    // Checks if the parent concept exists based on the count result.
+                    if ($count < 1) {
+                        throw new moodle_exception(get_string('error_nonexistent_parent', 'datafield_concepthierarchy'));
+                        // Apunte: Eliminar el error que sale del stack (pila).
+                    }
+                } else {
+                    // Throws an exception if no 'Concept' or 'Concepto' field was found.
+                    throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
                 }
-            } else {
-                // Throws an exception if no 'Concept' or 'Concepto' field was found.
-                throw new moodle_exception(get_string('error_nonexistent_field', 'datafield_concepthierarchy'));
             }
+        } catch (moodle_exception $e) {
+            \core\notification::error(get_string($e->errorcode, $e->module));
         }
 
         // Proceeds with updating or inserting the content for this field in the database.
