@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Implements a custom field type for hierarchical concepts in the Database activity module.
  *
- * This class extends the base data field class, providing custom behavior for
+ * This class extends the base data field class, providing a custom behavior for
  * handling, displaying, and searching hierarchical concept data within a Database activity.
  */
 
@@ -127,8 +127,8 @@ class data_field_concepthierarchy extends data_field_base
                 }
             }
         } catch (moodle_exception $e) {
-            \core\notification::error(get_string($e->errorcode, $e->module));
             $errorOcurred = true;
+            \core\notification::error(get_string($e->errorcode, $e->module));
         }
 
         // If an error occurred, it terminates the execution of the method by returning false.
