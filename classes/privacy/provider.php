@@ -16,8 +16,9 @@
 /**
  * Privacy Subsystem implementation for datafield_text.
  *
- * @package    datafield_text
+ * @package    datafield
  * @copyright  2018 Carlos Escobedo <carlos@moodle.com>
+ * @copyright  2024 Nikolay <nikolaypn2002@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,6 +32,7 @@ defined('MOODLE_INTERNAL') || die();
  * Privacy Subsystem for datafield_text implementing null_provider.
  *
  * @copyright  2018 Carlos Escobedo <carlos@moodle.com>
+ * @copyright  2024 Nikolay <nikolaypn2002@gmail.com> 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements
