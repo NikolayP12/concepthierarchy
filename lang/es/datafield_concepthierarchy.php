@@ -30,6 +30,6 @@ $string['privacy:metadata'] = 'El componente de campo Parent Concept no almacena
 $string['previewContent'] = 'Nombre del concepto padre:';
 $string['parentFieldLabel'] = 'Concepto de padre';
 
-// Error messages.
-$string['error_nonexistent_field'] = 'No hay ningún campo en la entrada llamado "Concepto" o "Concept".';
+// Error strings.
+$string['error_nonexistent_field'] = 'No hay ningún campo en las entradas llamado "Concepto" o "Concept".';
 $string['error_nonexistent_parent'] = 'El valor especificado como padre no existe.';
