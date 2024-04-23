@@ -74,6 +74,7 @@ class data_field_concepthierarchy extends data_field_base
     function update_content($recordid, $value, $name = '')
     {
         global $DB;
+        $errorOcurred = false;
 
         // $value contains the name of the parent concept entered.
         $value = trim($value);
