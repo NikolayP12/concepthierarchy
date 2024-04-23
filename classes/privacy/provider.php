@@ -16,11 +16,12 @@
 /**
  * Privacy Subsystem implementation for datafield_text.
  *
- * @package    datafield
- * @copyright  2018 Carlos Escobedo <carlos@moodle.com>
- * @copyright  2024 Nikolay <nikolaypn2002@gmail.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     datafield
+ * @subpackage  concepthierarchy
+ * @copyright   2024 Nikolay <nikolaypn2002@gmail.com>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 
 namespace datafield_text\privacy;
 
