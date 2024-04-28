@@ -6,8 +6,8 @@ The plugin needs to be installed by putting the contents of this directory to
 
     {your/moodle/dirroot}/mod/data/field/
 
-Afterwards, log in to your Moodle site as an admin and go to \_Site administration >
-\_Notifications to complete the installation.
+Afterwards, log in to your Moodle site as an admin and go to /Site administration >
+/Notifications to complete the installation.
 
 ## License
 
@@ -22,7 +22,7 @@ If not, see <https://www.gnu.org/licenses/>.
 
 ## Purpose
 
-The purpose of this plugin is to create a new field for the database module that acts as a parent concept in a hierarchical manner. This new field is of the text type, differing from a "short text" field in that it automatically links to a defined "short text" field labeled as "Concept" or "Concepto" to facilitate the linking of Database entries.
+The purpose of this plugin is to create a new field for the database module that acts as a parent concept in a hierarchical manner. This new field is of the text type, differing from a "short text" field is that it automatically links to a defined "short text" field labeled as "Concept" or "Concepto" to facilitate the linking of Database entries.
 
 This will ease navigation among different Database entries, allowing users to see the parent concept of any given entry, thereby creating an internal hierarchical tree of concepts.
 
@@ -34,7 +34,7 @@ Once the plugin has been installed, to use the icon that identifies the new fiel
 
 With this simple step, once the site cache has been purged, the icon for the new field will appear.
 
-To purge the cache, simply go to \_Site administration > \_Development > \_Purge caches.
+To purge the cache, simply go to /Site administration > /Development > /Purge caches.
 
 ## Usage
 
