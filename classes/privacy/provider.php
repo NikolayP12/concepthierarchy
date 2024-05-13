@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
- * Privacy Subsystem implementation for datafield_text.
+ * Privacy Subsystem implementation for datafield_concepthierarchy.
  *
  * @package     datafield
  * @subpackage  concepthierarchy
@@ -23,7 +23,7 @@
  */
 
 
-namespace datafield_text\privacy;
+namespace datafield_concepthierarchy\privacy;
 
 use core_privacy\local\request\writer;
 use mod_data\privacy\datafield_provider;
