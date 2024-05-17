@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = 'Parent Concept';
-$string['fieldtypelabel'] = 'Hierarchy';
+$string['fieldtypelabel'] = 'Parent Concept';
 $string['privacy:metadata'] = 'The Parent Concept field component doesn\'t store any personal data; it uses tables defined in mod_data.';
 $string['previewContent'] = 'Name of the parent concept:';
 $string['parentFieldLabel'] = 'Parent Concept';
