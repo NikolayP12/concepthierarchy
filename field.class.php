@@ -119,7 +119,6 @@ class data_field_concepthierarchy extends data_field_base
                     // Checks if the parent concept exists based on the count result.
                     if ($count < 1) {
                         throw new moodle_exception('error_nonexistent_parent', 'datafield_concepthierarchy');
-                        // Apunte: Eliminar el error que sale del stack (pila).
                     }
                 } else {
                     // Throws an exception if no 'Concept' or 'Concepto' field was found.
@@ -215,7 +214,7 @@ class data_field_concepthierarchy extends data_field_base
     {
         global $DB;
 
-        static $i = 0; // Se va a utilizar para generar identificadores únicos con cada llamada a la función.
+        static $i = 0; // It will be used to generate unique identifiers with each function call.
         $i++;
         $name = "df_parentConcept_$i";
 
